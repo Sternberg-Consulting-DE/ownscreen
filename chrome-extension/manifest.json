@@ -1,0 +1,84 @@
+{
+  "manifest_version": 3,
+  "name": "Capture Desk",
+  "version": "1.4.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzaCk08oK3Y5TOHR9LJU0cXmNEtLIgmUrXsI7pO7kfUvdWXL09iCiFn9o51gy7sVFAHUAxcfqio2PP0xmurNKYjSVsaKgXR2tizVXPqhYaeBfLpZVKz5NXTwXsM3qRzavaSZOiMSNrnTxJLU6UjJksUxzct8TNntoB0mW69pJHkEDhgYWfV+M0AE5JMMOuIl7Pih0d2Jn3kjSwx86h4+4NW7V3h6k87GdU9cv5Yak0exzqS81rqa0vAHilyM6MRUnnojojGE6Fn0wiGAOZjxn9U1KLOUErnIkMOgS+2dpeQGSb7nN8Qv0dkSYhFwSDFxiDIifIhByJ1vtBvJt176AjwIDAQAB",
+  "description": "__MSG_description__",
+  "minimum_chrome_version": "127",
+  "icons": {
+    "16": "icons/recorder-16.png",
+    "32": "icons/recorder-32.png",
+    "48": "icons/recorder-48.png",
+    "128": "icons/recorder-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabCapture",
+    "desktopCapture",
+    "offscreen",
+    "downloads",
+    "clipboardWrite",
+    "contextMenus",
+    "identity"
+  ],
+  "optional_host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*",
+    "https://openrouter.ai/*",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "Capture Desk",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/recorder-16.png",
+      "24": "icons/recorder-24.png",
+      "32": "icons/recorder-32.png",
+      "48": "icons/recorder-48.png"
+    }
+  },
+  "commands": {
+    "pause-resume": {
+      "global": true,
+      "description": "__MSG_pause_resume__"
+    },
+    "stop-recording": {
+      "global": true,
+      "suggested_key": {
+        "default": "Ctrl+Shift+8"
+      },
+      "description": "__MSG_stop_recording__"
+    },
+    "show-controls": {
+      "global": true,
+      "description": "__MSG_show_controls__"
+    },
+    "capture-visible": {
+      "description": "__MSG_capture_visible__"
+    },
+    "capture-fullpage": {
+      "description": "__MSG_capture_fullpage__"
+    },
+    "capture-region": {
+      "description": "__MSG_capture_region__"
+    },
+    "start-recording": {
+      "description": "__MSG_start_recording__"
+    }
+  },
+  "default_locale": "en"
+}

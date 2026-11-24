@@ -1,0 +1,33 @@
+name: Bug or idea
+description: Report a problem or suggest something Capture Desk should do.
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is it about?
+      options:
+        - Something doesn't work (bug)
+        - Idea or feature request
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, or what would you like Capture Desk to do? Screenshots help.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce (bugs only)
+      placeholder: "1. Open the menu\n2. Choose Window\n3. …"
+  - type: input
+    id: version
+    attributes:
+      label: Capture Desk version
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Chrome 131 on macOS
