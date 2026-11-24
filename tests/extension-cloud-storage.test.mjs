@@ -62,7 +62,7 @@ test("an expired OneDrive token is refreshed without opening a sign-in window", 
   assert.deepEqual(JSON.parse(calls[1].body), { type: "view", scope: "anonymous" });
 });
 
-test("OneDrive uploads into the Capture Desk folder in aligned chunks", async () => {
+test("OneDrive uploads into the OwnScreen folder in aligned chunks", async () => {
   const { chrome } = fakeChrome({ tokens: { onedrive: valid } });
   const size = CHUNK_BYTES + 1000;
   const { calls, fetch } = recorder((url, options) => {
@@ -72,7 +72,7 @@ test("OneDrive uploads into the Capture Desk folder in aligned chunks", async ()
   });
   const item = await createCloudStorage({ chrome, fetch }).upload("onedrive", new Blob([new Uint8Array(size)], { type: "video/webm" }), "Demo.webm");
   assert.deepEqual(item, { itemId: "item1", webUrl: "https://onedrive.example/item1", name: "Demo.webm" });
-  assert.match(calls[0].url, /root:\/Capture%20Desk\/Demo\.webm:\/createUploadSession$/);
+  assert.match(calls[0].url, /root:\/OwnScreen\/Demo\.webm:\/createUploadSession$/);
   assert.equal(CHUNK_BYTES % (320 * 1024), 0);
   assert.deepEqual(calls.slice(1).map(call => call.headers["Content-Range"]), [`bytes 0-${CHUNK_BYTES - 1}/${size}`, `bytes ${CHUNK_BYTES}-${size - 1}/${size}`]);
   assert.equal(calls[1].headers.Authorization, undefined, "upload URLs are pre-authorized and must not receive the token");

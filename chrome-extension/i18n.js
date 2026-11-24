@@ -6,7 +6,7 @@ const labels = [
   ["Sprache der Oberfläche", "Interface language", "Langue de l’interface", "Idioma de la interfaz"],
   ["Sprache von Chrome", "Chrome language", "Langue de Chrome", "Idioma de Chrome"],
   ["KI mit Transkript", "AI with transcript", "IA avec transcription", "IA con transcripción"],
-  ["Capture Desk · Aufnahme beenden", "Capture Desk · Stop recording", "Capture Desk · Arrêter l’enregistrement", "Capture Desk · Detener la grabación"],
+  ["OwnScreen · Aufnahme beenden", "OwnScreen · Stop recording", "OwnScreen · Arrêter l’enregistrement", "OwnScreen · Detener la grabación"],
   ["Stoppen und speichern", "Stop and save", "Arrêter et enregistrer", "Detener y guardar"],
 ];
 const rows = [...capture, ...editing, ...labels];

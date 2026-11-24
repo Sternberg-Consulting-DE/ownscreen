@@ -1,17 +1,17 @@
-# Capture Desk
+# OwnScreen
 
-Capture Desk records your screen or a selected rectangle and keeps the result in your browser. It works without a Capture Desk account or a recording server.
+OwnScreen records your screen or a selected rectangle and keeps the result in your browser. It works without a OwnScreen account or a recording server.
 
 - **Chrome extension** — record a display, window or Chrome tab, choose an area, and use the floating controls. Capture and edit screenshots, trim and mark up videos, and save files to an optional local folder.
 - **Desktop browser app** — record, crop and download in Firefox, Safari and Chromium when the browser exposes the required screen capture APIs.
-- **Optional online storage** — save recordings straight from your browser to your own OneDrive or Google Drive and create a share link (anyone with the link, or only your organization). No Capture Desk server is involved.
+- **Optional online storage** — save recordings straight from your browser to your own OneDrive or Google Drive and create a share link (anyone with the link, or only your organization). No OwnScreen server is involved.
 - **Optional AI assistant** — analyze screenshots or supplied text and transcripts with OpenAI, Anthropic, OpenRouter or Ollama. The recorder interface is available in English, German, French and Spanish.
 
-[Open the browser app](https://sternbj.github.io/capture-desk/standalone/) · [Download Chrome builds](https://github.com/sternbj/capture-desk/releases) · [Data use](https://sternbj.github.io/capture-desk/privacy.html)
+[Open the browser app](https://sternbj.github.io/ownscreen/standalone/) · [Download Chrome builds](https://github.com/sternbj/ownscreen/releases) · [Data use](https://sternbj.github.io/ownscreen/privacy.html)
 
 ## Record
 
-In Chrome, install the extension, choose a source, and turn on **Record an area** if you want to draw a rectangle in the preview. Use the floating bar to pause, stop or open recording settings. In a full-display recording the bar is visible in the video; switch it off under **Floating bar** if you prefer. Keep the pinned Capture Desk tab open while recording: Chrome ties the shared source to it. You can also end Chrome's share to save a recording. Find your copies under **Recordings in Chrome**.
+In Chrome, install the extension, choose a source, and turn on **Record an area** if you want to draw a rectangle in the preview. Use the floating bar to pause, stop or open recording settings. In a full-display recording the bar is visible in the video; switch it off under **Floating bar** if you prefer. Keep the pinned OwnScreen tab open while recording: Chrome ties the shared source to it. You can also end Chrome's share to save a recording. Find your copies under **Recordings in Chrome**.
 
 In the browser app, choose a source through the browser and keep the recorder page open. Position the crop after sharing the source. The browser controls which sources and source audio are available. Turn on the microphone separately for narration. On desktop Safari and Firefox, use the in-page recording controls when an always-on-top controls window is unavailable.
 
@@ -26,7 +26,7 @@ Open **AI assistant** and choose the provider and model. For a video, paste its 
 | OpenRouter | Enter your own OpenRouter API key and choose a model supporting the input you plan to send. |
 | Ollama | Run Ollama on the same computer. Pull a model, such as `gemma3:4b` for image and text input, and use `http://127.0.0.1:11434`. |
 
-Keep cloud API keys private. Capture Desk holds a key only while the assistant dialog is open. The selected cloud provider can charge for requests. A local Ollama setup can use `OLLAMA_NO_CLOUD=1`. If Ollama rejects requests from the browser, allow the exact app origin via `OLLAMA_ORIGINS` in Ollama's process environment and restart Ollama. Use `http://127.0.0.1:4173` for the default local website or `https://sternbj.github.io` for GitHub Pages. For Chrome, use `chrome-extension://<id>` with the ID shown on the Capture Desk extension card in `chrome://extensions`. Use a local model and the [Ollama configuration guide](https://docs.ollama.com/faq).
+Keep cloud API keys private. OwnScreen holds a key only while the assistant dialog is open. The selected cloud provider can charge for requests. A local Ollama setup can use `OLLAMA_NO_CLOUD=1`. If Ollama rejects requests from the browser, allow the exact app origin via `OLLAMA_ORIGINS` in Ollama's process environment and restart Ollama. Use `http://127.0.0.1:4173` for the default local website or `https://sternbj.github.io` for GitHub Pages. For Chrome, use `chrome-extension://<id>` with the ID shown on the OwnScreen extension card in `chrome://extensions`. Use a local model and the [Ollama configuration guide](https://docs.ollama.com/faq).
 
 For a long transcript, choose a model whose context window can fit the input or process the sections separately. If the browser asks for local network access to reach Ollama, allow it for the recorder page after checking the local address.
 
@@ -48,7 +48,7 @@ Run the tests with `npx playwright install chromium firefox webkit` followed by 
 
 ## Feedback and contributing
 
-Found a bug or have an idea? Use **Feedback** in the extension menu or [open an issue](https://github.com/sternbj/capture-desk/issues/new?template=feedback.yml). Pull requests are welcome.
+Found a bug or have an idea? Use **Feedback** in the extension menu or [open an issue](https://github.com/sternbj/ownscreen/issues/new?template=feedback.yml). Pull requests are welcome.
 
 Copyright © 2026 Jonathan Sternberg. Licensed under the GNU GPL v3 or later.
 

@@ -216,7 +216,7 @@ async function publish(patch) {
   await chrome.action.setBadgeText({ text: badge });
   await chrome.action.setBadgeBackgroundColor({ color: saved ? "#257a54" : state.status === "paused" ? "#b7791f" : "#cf304a" });
   const title = ["recording", "paused"].includes(state.status) ? "Aufnahme beenden" : state.status === "stopping" ? "Aufnahme wird gespeichert" : saved ? "Aufnahme ansehen" : "";
-  await chrome.action.setTitle({ title: title ? `Capture Desk · ${title}` : "Capture Desk" });
+  await chrome.action.setTitle({ title: title ? `OwnScreen · ${title}` : "OwnScreen" });
   chrome.runtime.sendMessage({ type: "STATE_CHANGED", state }).catch(() => {});
   return state;
 }
@@ -1271,7 +1271,7 @@ async function updateContextMenus() {
     const preferences = await recorderPreferences();
     if (!preferences.showContextMenu) return;
     for (const [id, title] of [["visible", "Sichtbaren Bereich aufnehmen"], ["fullpage", "Ganze Seite aufnehmen"], ["region", "Bereich auswählen"], ["screen", "Bildschirm oder Fenster aufnehmen"], ["edit", "Bild bearbeiten"], ["record", "Aufnahmemenü öffnen"]])
-      chrome.contextMenus.create({ id: "recorder-" + id, title: "Capture Desk · " + title, contexts: ["page", "image", "selection", "video"], documentUrlPatterns: ["http://*/*", "https://*/*", "file:///*"] });
+      chrome.contextMenus.create({ id: "recorder-" + id, title: "OwnScreen · " + title, contexts: ["page", "image", "selection", "video"], documentUrlPatterns: ["http://*/*", "https://*/*", "file:///*"] });
   })().finally(() => { creatingContextMenus = null; });
   return creatingContextMenus;
 }

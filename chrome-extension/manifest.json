@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Capture Desk",
+  "name": "OwnScreen – Screen Recorder",
   "version": "1.4.0",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzaCk08oK3Y5TOHR9LJU0cXmNEtLIgmUrXsI7pO7kfUvdWXL09iCiFn9o51gy7sVFAHUAxcfqio2PP0xmurNKYjSVsaKgXR2tizVXPqhYaeBfLpZVKz5NXTwXsM3qRzavaSZOiMSNrnTxJLU6UjJksUxzct8TNntoB0mW69pJHkEDhgYWfV+M0AE5JMMOuIl7Pih0d2Jn3kjSwx86h4+4NW7V3h6k87GdU9cv5Yak0exzqS81rqa0vAHilyM6MRUnnojojGE6Fn0wiGAOZjxn9U1KLOUErnIkMOgS+2dpeQGSb7nN8Qv0dkSYhFwSDFxiDIifIhByJ1vtBvJt176AjwIDAQAB",
   "description": "__MSG_description__",
@@ -42,7 +42,7 @@
     "open_in_tab": true
   },
   "action": {
-    "default_title": "Capture Desk",
+    "default_title": "OwnScreen",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/recorder-16.png",

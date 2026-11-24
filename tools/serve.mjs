@@ -25,4 +25,4 @@ createServer(async (request, response) => {
     if (!response.headersSent) response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");
   }
-}).listen(port, "127.0.0.1", () => console.log(`Capture Desk at http://127.0.0.1:${port}/standalone/`));
+}).listen(port, "127.0.0.1", () => console.log(`OwnScreen at http://127.0.0.1:${port}/standalone/`));

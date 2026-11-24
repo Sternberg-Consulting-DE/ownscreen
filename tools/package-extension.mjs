@@ -69,7 +69,7 @@ for (const file of files)
   if (file.endsWith(".js")) execFileSync(process.execPath, ["--check", join(extension, file)], { stdio: "pipe" });
 const outputDirectory = join(project, "artifacts");
 await mkdir(outputDirectory, { recursive: true });
-const output = join(outputDirectory, storeBuild ? "Capture-Desk-Chrome-Web-Store.zip" : "ScreenRecorder-Chrome.zip");
+const output = join(outputDirectory, storeBuild ? "OwnScreen-Chrome-Web-Store.zip" : "ScreenRecorder-Chrome.zip");
 const temporary = join(outputDirectory, `extension-${Date.now()}.zip`);
 const staging = await mkdtemp(join(tmpdir(), "capture-desk-build-"));
 try {

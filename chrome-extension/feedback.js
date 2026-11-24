@@ -1,5 +1,5 @@
 // "Feedback" links open a prefilled GitHub issue form for bugs and ideas.
-export const PROJECT_URL = "https://github.com/sternbj/capture-desk";
+export const PROJECT_URL = "https://github.com/sternbj/ownscreen";
 
 export function feedbackUrl({ version = "", browser = "" } = {}) {
   const url = new URL(`${PROJECT_URL}/issues/new`);

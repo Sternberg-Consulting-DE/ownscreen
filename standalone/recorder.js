@@ -394,7 +394,7 @@
       if (!recording()) { opened.close(); return; }
       pip = opened;
       const doc = pip.document;
-      doc.title = "Capture Desk";
+      doc.title = "OwnScreen";
       doc.body.className = "recording-pip";
       const css = doc.createElement("link");
       css.rel = "stylesheet";

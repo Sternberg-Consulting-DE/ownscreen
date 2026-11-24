@@ -78,7 +78,7 @@ function providerRequest({ provider, model, key, maxTokens, browser }, text, ima
     ];
     Object.assign(body, { messages: [system, user], response_format: { type: "json_object" } });
     if (provider === "openrouter") {
-      headers["X-Title"] = "Capture Desk";
+      headers["X-Title"] = "OwnScreen";
       Object.assign(body, { temperature: .2, max_tokens: maxTokens });
     } else {
       body.max_completion_tokens = maxTokens;

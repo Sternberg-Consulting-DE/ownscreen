@@ -112,7 +112,7 @@ async function pinBar() {
   pip.document.documentElement.dataset.theme = document.documentElement.dataset.theme;
   pip.document.documentElement.dataset.themePreference = document.documentElement.dataset.themePreference;
   pip.document.documentElement.style.colorScheme = document.documentElement.style.colorScheme;
-  pip.document.title = "Capture Desk · Control bar";
+  pip.document.title = "OwnScreen · Control bar";
   pip.document.body.style.visibility = "hidden";
   const style = pip.document.createElement("link");
   style.rel = "stylesheet"; style.href = chrome.runtime.getURL("floatingbar.css");

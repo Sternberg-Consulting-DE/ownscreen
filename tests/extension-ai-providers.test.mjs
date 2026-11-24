@@ -33,7 +33,7 @@ const cases = [
     provider: "openrouter", endpoint: "https://openrouter.ai/api/v1/chat/completions",
     verify: (headers, body) => {
       assert.equal(headers.get("authorization"), "Bearer example-key");
-      assert.equal(headers.get("x-title"), "Capture Desk");
+      assert.equal(headers.get("x-title"), "OwnScreen");
       assert.deepEqual(body.response_format, { type: "json_object" });
     },
     reply: { choices: [{ finish_reason: "stop", message: { content: [{ type: "text", text: JSON.stringify(result) }] } }] },

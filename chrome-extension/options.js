@@ -164,7 +164,7 @@ function cloudBlock(id, provider) {
   block.querySelector(".cloud-redirect").textContent = provider.redirectUri;
   block.querySelector(".cloud-state").textContent = !provider.configured
     ? "Noch nicht eingerichtet. Diese Version enthält keine App-ID für diesen Dienst."
-    : provider.connected ? "Verbunden. Videos werden in den Ordner „Capture Desk“ gespeichert." : "Nicht verbunden.";
+    : provider.connected ? "Verbunden. Videos werden in den Ordner „OwnScreen“ gespeichert." : "Nicht verbunden.";
   block.querySelector('[data-action="connect"]').disabled = !provider.configured;
   block.querySelector('[data-action="disconnect"]').hidden = !provider.connected;
   const say = (text, error = false) => { const node = block.querySelector(".cloud-message"); node.textContent = text; node.dataset.error = String(error); };

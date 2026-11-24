@@ -3,7 +3,7 @@
 // Microsoft or Google account without a server of our own.
 import { CLOUD_CLIENT_IDS } from "./app-config.js";
 
-export const CLOUD_FOLDER = "Capture Desk";
+export const CLOUD_FOLDER = "OwnScreen";
 // OneDrive needs multiples of 320 KiB, Google Drive multiples of 256 KiB.
 // 5 MiB satisfies both and keeps each request well below their limits.
 export const CHUNK_BYTES = 5 * 1024 * 1024;

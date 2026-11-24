@@ -339,7 +339,7 @@ function applyState(state) {
   const safeToShow = captureTabStatus || allowSurface && (["idle", "paused", "error", "selecting", "preparing"].includes(current.status)
     || (["tab", "camera"].includes(current.sourceMode) && ["recording", "stopping"].includes(current.status))
     || (isPopup && current.status === "stopping" && current.popupHidden === false));
-  document.title = captureTabStatus ? (current.status === "paused" ? "⏸ Capture Desk · Pausiert" : "● Capture Desk · Aufnahme läuft") : "Capture Desk";
+  document.title = captureTabStatus ? (current.status === "paused" ? "⏸ OwnScreen · Pausiert" : "● OwnScreen · Aufnahme läuft") : "OwnScreen";
   document.body.classList.toggle("capture-hidden", !safeToShow);
   document.body.style.visibility = safeToShow ? "visible" : "hidden";
   const active = activeStatuses.includes(current.status);

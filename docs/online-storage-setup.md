@@ -1,6 +1,6 @@
 # Online storage setup (OneDrive and Google Drive)
 
-Capture Desk saves recordings directly from the browser into each user's own
+OwnScreen saves recordings directly from the browser into each user's own
 OneDrive or Google Drive. There is no server in between. You register the app
 once with Microsoft and Google; every user then only signs in.
 
@@ -11,7 +11,7 @@ and that address contains the extension ID.
 
 1. Create a Chrome Web Store developer account (one-time 5 USD).
 2. Build the store package: `npm run package:extension:store`.
-3. Upload `artifacts/Capture-Desk-Chrome-Web-Store.zip` as a **draft** (do not publish yet).
+3. Upload `artifacts/OwnScreen-Chrome-Web-Store.zip` as a **draft** (do not publish yet).
 4. In the dashboard open **Package → View public key**. Copy the key into
    `chrome-extension/manifest.json` as `"key": "<public key>"`. Your unpacked
    test version now has the same ID as the store version.
@@ -23,7 +23,7 @@ and that address contains the extension ID.
 ## 1. Microsoft (OneDrive)
 
 1. Open <https://entra.microsoft.com> → **App registrations → New registration**.
-2. Name: `Capture Desk`.
+2. Name: `OwnScreen`.
 3. Supported account types: **Accounts in any organizational directory and personal Microsoft accounts**.
 4. Redirect URI: platform **Single-page application (SPA)**, value
    `https://<extension-id>.chromiumapp.org/onedrive`.
@@ -37,10 +37,10 @@ and that address contains the extension ID.
 
 ## 2. Google (Google Drive)
 
-1. Open <https://console.cloud.google.com> → create project `Capture Desk`.
+1. Open <https://console.cloud.google.com> → create project `OwnScreen`.
 2. **APIs & Services → Library** → enable **Google Drive API**.
 3. **OAuth consent screen** (Google Auth Platform): External, app name, support
-   email, logo, homepage, privacy policy URL `https://sternbj.github.io/capture-desk/privacy.html`.
+   email, logo, homepage, privacy policy URL `https://sternbj.github.io/ownscreen/privacy.html`.
    Scope: `.../auth/drive.file` only. This scope only sees files the app creates
    and is not a restricted scope, so no security audit is required.
 4. **Clients → Create client** → type **Web application**. Authorized redirect URI:
