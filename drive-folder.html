@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Drive folder · OwnScreen</title>
+<style>
+  :root{color-scheme:light dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;--bg:#f7f8fb;--text:#2d323c;--muted:#757f90;--error:#b84758}
+  @media(prefers-color-scheme:dark){:root{--bg:#181c24;--text:#edf0f5;--muted:#a6afbf;--error:#ff9aac}}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text)}
+  main{max-width:420px;padding:24px;text-align:center}
+  h1{font-size:18px;margin:0 0 8px}
+  p{margin:0;color:var(--muted);line-height:1.5}
+  p[data-error=true]{color:var(--error)}
+</style>
+</head>
+<body>
+<main><h1 id="title">OwnScreen</h1><p id="message" role="status" aria-live="polite"></p></main>
+<script>
+// Shows Google's folder picker for the OwnScreen Chrome extension, which may
+// not load Google's script itself. The extension passes a short-lived token
+// in the URL fragment, which browsers never send to this website's server.
+(() => {
+  // Restricted in Google Cloud to this website and to the Google Picker API.
+  const API_KEY = "AIzaSyCUs7280PC83AUf9C1jsizetpcV82TE4Rc";
+  const FOLDER = "application/vnd.google-apps.folder";
+  const texts = {
+    de: { title: "Ordner in Google Drive wählen", loading: "Google Drive wird geöffnet…", pick: "Wähle den Ordner für deine Videos", failed: "Die Google-Auswahl konnte nicht geladen werden. Schließe dieses Fenster und versuche es erneut.", setup: "Die Google-Auswahl ist noch nicht eingerichtet. Schließe dieses Fenster.", invalid: "Öffne die Ordnerauswahl über die Einstellungen von OwnScreen." },
+    en: { title: "Choose a folder in Google Drive", loading: "Opening Google Drive…", pick: "Choose the folder for your videos", failed: "Google’s picker could not be loaded. Close this window and try again.", setup: "Google’s picker is not set up yet. Close this window.", invalid: "Open the folder chooser from the OwnScreen settings." },
+    fr: { title: "Choisir un dossier dans Google Drive", loading: "Ouverture de Google Drive…", pick: "Choisissez le dossier pour vos vidéos", failed: "Le sélecteur Google n’a pas pu être chargé. Fermez cette fenêtre et réessayez.", setup: "Le sélecteur Google n’est pas encore configuré. Fermez cette fenêtre.", invalid: "Ouvrez le choix du dossier depuis les paramètres d’OwnScreen." },
+    es: { title: "Elegir una carpeta en Google Drive", loading: "Abriendo Google Drive…", pick: "Elige la carpeta para tus vídeos", failed: "No se pudo cargar el selector de Google. Cierra esta ventana y vuelve a intentarlo.", setup: "El selector de Google aún no está configurado. Cierra esta ventana.", invalid: "Abre la selección de carpeta desde los ajustes de OwnScreen." },
+  };
+  const language = (navigator.language || "en").slice(0, 2).toLowerCase();
+  const text = texts[language] || texts.en;
+  document.documentElement.lang = texts[language] ? language : "en";
+  document.title = `${text.title} · OwnScreen`;
+  document.getElementById("title").textContent = text.title;
+  const say = (message, error = false) => {
+    const node = document.getElementById("message");
+    node.textContent = message;
+    node.dataset.error = String(error);
+  };
+
+  const values = new URLSearchParams(location.hash.slice(1));
+  history.replaceState(null, "", location.pathname); // Keep the token out of the history.
+  const token = values.get("access_token");
+  const state = values.get("state");
+  const redirect = values.get("redirect_uri") || "";
+  const appId = values.get("app_id") || "";
+  // Only hand results back to a Chrome extension, never to another website.
+  if (!token || !state || !/^\d+$/.test(appId) || !/^https:\/\/[a-p]{32}\.chromiumapp\.org\/gdrive-folder$/.test(redirect)) {
+    say(text.invalid, true);
+    return;
+  }
+  if (!API_KEY) { say(text.setup, true); return; }
+  const finish = folder => location.replace(`${redirect}#${new URLSearchParams(folder ? { folder, state } : { state })}`);
+
+  say(text.loading);
+  const script = document.createElement("script");
+  script.src = "https://apis.google.com/js/api.js";
+  script.onerror = () => say(text.failed, true);
+  script.onload = () => window.gapi.load("picker", { callback: () => {
+    const { picker } = window.google;
+    const view = new picker.DocsView(picker.ViewId.FOLDERS)
+      .setIncludeFolders(true).setSelectFolderEnabled(true).setMimeTypes(FOLDER).setMode(picker.DocsViewMode.LIST);
+    new picker.PickerBuilder()
+      .addView(view)
+      .setOAuthToken(token).setDeveloperKey(API_KEY).setAppId(appId)
+      .setLocale(document.documentElement.lang).setTitle(text.pick)
+      .setSize(Math.min(innerWidth, 1051), Math.min(innerHeight, 650))
+      .setCallback(data => {
+        if (data.action === picker.Action.PICKED) finish(data.docs?.[0]?.id);
+        else if (data.action === picker.Action.CANCEL) finish(null);
+      })
+      .build().setVisible(true);
+    say("");
+  }, onerror: () => say(text.failed, true) });
+  document.head.append(script);
+})();
+</script>
+</body>
+</html>
